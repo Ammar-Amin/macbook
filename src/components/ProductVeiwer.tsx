@@ -1,9 +1,9 @@
-import React from "react";
-import useMacbookStore from "../store";
-import clsx from "clsx";
+import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Box, OrbitControls } from "@react-three/drei";
+import clsx from "clsx";
+import useMacbookStore from "../store";
 import Macbook14Model from "./models/Macbook-14";
+import StudioLigths from "./StudioLigths";
 
 const ProductVeiwer = () => {
   const { color, scale, setColor, setScale } = useMacbookStore();
@@ -66,13 +66,14 @@ const ProductVeiwer = () => {
         id="canvas"
         camera={{ position: [0, 2, 5], fov: 50, near: 0.1, far: 100 }}
       >
-        <ambientLight intensity={1} />
+        <StudioLigths />
 
         <Macbook14Model
           scale={0.08}
           position={[0, 0, 0]}
           material-color={color}
         />
+
         <OrbitControls enableZoom={false} />
       </Canvas>
     </section>
